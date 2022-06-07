@@ -29,6 +29,18 @@ async function main() {
 
     const addr = CErc20DelegateContract.address;
 
+    const CBnb = await hre.ethers.getContractFactory("CBNB");
+    const CBnbContract = await CBnb.deploy(
+        ComptrollerContract.address,
+        WhitePaperInterestRateModelContract.address,
+        "200000000000000000000000000",
+        "CompoundBnb",
+        "cBNB",
+        "8",
+        deployer.address
+    );
+    console.log("CBNB address:", CBnbContract.address);
+
     //testnet addresses
     const underlyingAddresses = {
         USDT: "0x377533D0E68A22CF180205e9c9ed980f74bc5050",
@@ -56,12 +68,12 @@ async function main() {
 
     CErc20Delegator = await hre.ethers.getContractFactory("CErc20Delegator");
     CErc20DelegatorContract = await CErc20Delegator.deploy(
-        underlyingAddresses.USDT,
+        underlyingAddresses.USDC,
         ComptrollerContract.address,
         WhitePaperInterestRateModelContract.address,
         "200000000000000000000000000",
-        "CompoundUSDT",
-        "cUSDT",
+        "CompoundUSDC",
+        "cUSDC",
         "8",
         deployer.address,
         addr,
@@ -71,12 +83,12 @@ async function main() {
 
     CErc20Delegator = await hre.ethers.getContractFactory("CErc20Delegator");
     CErc20DelegatorContract = await CErc20Delegator.deploy(
-        underlyingAddresses.USDT,
+        underlyingAddresses.BUSD,
         ComptrollerContract.address,
         WhitePaperInterestRateModelContract.address,
         "200000000000000000000000000",
-        "CompoundUSDT",
-        "cUSDT",
+        "CompoundBUSD",
+        "cBUSD",
         "8",
         deployer.address,
         addr,
@@ -86,12 +98,12 @@ async function main() {
 
     CErc20Delegator = await hre.ethers.getContractFactory("CErc20Delegator");
     CErc20DelegatorContract = await CErc20Delegator.deploy(
-        underlyingAddresses.USDT,
+        underlyingAddresses.LTA,
         ComptrollerContract.address,
         WhitePaperInterestRateModelContract.address,
         "200000000000000000000000000",
-        "CompoundUSDT",
-        "cUSDT",
+        "CompoundLTA",
+        "cLTA",
         "8",
         deployer.address,
         addr,
@@ -100,7 +112,7 @@ async function main() {
     console.log("LTA address", CErc20DelegatorContract.address);
 
     const Comp = await hre.ethers.getContractFactory("Comp");
-    const CompContract = await Comp.deploy();
+    const CompContract = await Comp.deploy(deployer.address);
     console.log("Comp address:", CompContract.address);
 
     const Timelock = await hre.ethers.getContractFactory("Timelock");
