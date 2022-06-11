@@ -7,11 +7,11 @@ async function main() {
 
     const Borrow = await hre.ethers.getContractFactory("Borrow"); // Getting the Contract
     let contract = await Borrow.deploy(); //deploying the contract
-    console.log("Borrow Contract deployed to:", contract.address); 
+    console.log("Borrow Contract deployed to:", contract.address);
 
     const Deposit = await hre.ethers.getContractFactory("Deposit"); // Getting the Contract
     contract = await Deposit.deploy(); //deploying the contract
-    console.log("Deposit Contract deployed to:", contract.address); 
+    console.log("Deposit Contract deployed to:", contract.address);
 
     const Comptroller = await hre.ethers.getContractFactory("Unitroller");
     const ComptrollerContract = await Comptroller.deploy();
@@ -65,6 +65,7 @@ async function main() {
         "0x00"
     );
     console.log("cUSDT address", CErc20DelegatorContract.address);
+    const cUSDTAddress = CErc20DelegateContract.address;
 
     CErc20Delegator = await hre.ethers.getContractFactory("CErc20Delegator");
     CErc20DelegatorContract = await CErc20Delegator.deploy(
@@ -80,6 +81,7 @@ async function main() {
         "0x00"
     );
     console.log("cUSDC address", CErc20DelegatorContract.address);
+    const cUSDCAddress = CErc20DelegateContract.address;
 
     CErc20Delegator = await hre.ethers.getContractFactory("CErc20Delegator");
     CErc20DelegatorContract = await CErc20Delegator.deploy(
@@ -94,7 +96,8 @@ async function main() {
         addr,
         "0x00"
     );
-    console.log("BUSD address", CErc20DelegatorContract.address);
+    console.log("cBUSD address", CErc20DelegatorContract.address);
+    const cBUSDAddress = CErc20DelegateContract.address;
 
     CErc20Delegator = await hre.ethers.getContractFactory("CErc20Delegator");
     CErc20DelegatorContract = await CErc20Delegator.deploy(
@@ -109,7 +112,8 @@ async function main() {
         addr,
         "0x00"
     );
-    console.log("LTA address", CErc20DelegatorContract.address);
+    console.log("cLTA address", CErc20DelegatorContract.address);
+    //const cLTAAddress = CErc20DelegateContract.address;
 
     const Comp = await hre.ethers.getContractFactory("Comp");
     const CompContract = await Comp.deploy(deployer.address);
@@ -130,6 +134,61 @@ async function main() {
         "100000000000000000000000"
     );
     console.log("Governance address:", GovernorBravoDelegatorContract.address);
+
+    let LockDrop = await hre.ethers.getContractFactory("LockDrop");
+    let LockDropContract = await LockDrop.deploy(
+        "cUSDT 1 Month Lockdrop",
+        cUSDTAddress,
+        "20000000000"  // current timestamp + 1 month
+    );
+    console.log("cUSDT Lockdrop 1 month address:", LockDropContract.address);
+
+    LockDrop = await hre.ethers.getContractFactory("LockDrop");
+    LockDropContract = await LockDrop.deploy(
+        "cUSDT 3 Month Lockdrop",
+        cUSDTAddress,
+        "20000000000"  // current timestamp + 3 month
+    );
+    console.log("cUSDT Lockdrop 3 month address:", LockDropContract.address);
+    
+    //add 6, 9, 12 months
+
+    LockDrop = await hre.ethers.getContractFactory("LockDrop");
+    LockDropContract = await LockDrop.deploy(
+        "cUSDC 1 Month Lockdrop",
+        cUSDCAddress,
+        "20000000000"  // current timestamp + 1 month
+    );
+    console.log("cUSDC Lockdrop 1 month address:", LockDropContract.address);
+
+    LockDrop = await hre.ethers.getContractFactory("LockDrop");
+    LockDropContract = await LockDrop.deploy(
+        "cUSDC 3 Month Lockdrop",
+        cUSDCAddress,
+        "20000000000"  // current timestamp + 3 month
+    );
+    console.log("cUSDC Lockdrop 3 month address:", LockDropContract.address);
+
+    //add 6, 9, 12 months
+
+    LockDrop = await hre.ethers.getContractFactory("LockDrop");
+    LockDropContract = await LockDrop.deploy(
+        "cBUSD 1 Month Lockdrop",
+        cBUSDAddress,
+        "20000000000"  // current timestamp + 1 month
+    );
+    console.log("cBUSD Lockdrop 1 month address:", LockDropContract.address);
+
+    LockDrop = await hre.ethers.getContractFactory("LockDrop");
+    LockDropContract = await LockDrop.deploy(
+        "cBUSD 3 Month Lockdrop",
+        cBUSDAddress,
+        "20000000000"  // current timestamp + 3 month
+    );
+    console.log("cBUSD Lockdrop 3 month address:", LockDropContract.address);
+
+    //add 6, 9, 12 months
+
 }
 
 main()
