@@ -135,59 +135,23 @@ async function main() {
     );
     console.log("Governance address:", GovernorBravoDelegatorContract.address);
 
-    let LockDrop = await hre.ethers.getContractFactory("LockDrop");
-    let LockDropContract = await LockDrop.deploy(
-        "cUSDT 1 Month Lockdrop",
-        cUSDTAddress,
-        "20000000000"  // current timestamp + 1 month
-    );
-    console.log("cUSDT Lockdrop 1 month address:", LockDropContract.address);
-
     LockDrop = await hre.ethers.getContractFactory("LockDrop");
     LockDropContract = await LockDrop.deploy(
-        "cUSDT 3 Month Lockdrop",
-        cUSDTAddress,
-        "20000000000"  // current timestamp + 3 month
+        cUSDTAddress
     );
-    console.log("cUSDT Lockdrop 3 month address:", LockDropContract.address);
-    
-    //add 6, 9, 12 months
+    console.log("cUSDT Lockdrop address:", LockDropContract.address);
 
-    LockDrop = await hre.ethers.getContractFactory("LockDrop");
+    //LockDrop = await hre.ethers.getContractFactory("LockDrop");
     LockDropContract = await LockDrop.deploy(
-        "cUSDC 1 Month Lockdrop",
-        cUSDCAddress,
-        "20000000000"  // current timestamp + 1 month
+        cUSDCAddress
     );
-    console.log("cUSDC Lockdrop 1 month address:", LockDropContract.address);
+    console.log("cUSDC Lockdrop address:", LockDropContract.address);
 
-    LockDrop = await hre.ethers.getContractFactory("LockDrop");
+    //LockDrop = await hre.ethers.getContractFactory("LockDrop");
     LockDropContract = await LockDrop.deploy(
-        "cUSDC 3 Month Lockdrop",
-        cUSDCAddress,
-        "20000000000"  // current timestamp + 3 month
+        cBUSDAddress
     );
-    console.log("cUSDC Lockdrop 3 month address:", LockDropContract.address);
-
-    //add 6, 9, 12 months
-
-    LockDrop = await hre.ethers.getContractFactory("LockDrop");
-    LockDropContract = await LockDrop.deploy(
-        "cBUSD 1 Month Lockdrop",
-        cBUSDAddress,
-        "20000000000"  // current timestamp + 1 month
-    );
-    console.log("cBUSD Lockdrop 1 month address:", LockDropContract.address);
-
-    LockDrop = await hre.ethers.getContractFactory("LockDrop");
-    LockDropContract = await LockDrop.deploy(
-        "cBUSD 3 Month Lockdrop",
-        cBUSDAddress,
-        "20000000000"  // current timestamp + 3 month
-    );
-    console.log("cBUSD Lockdrop 3 month address:", LockDropContract.address);
-
-    //add 6, 9, 12 months
+    console.log("cBUSD Lockdrop address:", LockDropContract.address);
 
 }
 
