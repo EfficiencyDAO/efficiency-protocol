@@ -24,9 +24,9 @@ Implementation address: 0x5c1939e3B950689f30f83060497bBB368287eD84 (CErc20Delega
 cErc20 tokens on BSC testnet
     cUSDT address: 0x9C7E3B9ff089aa6943fB6Aaa5a0eeF215E8984a4
     cUSDC address: 0x35Df355c25627b432A6557C9b17bc697a2D77BEd
-    ...
+    ...please run hardhat/test file.
 
-Governance/Comp.sol SmartContract: 0x9C7E3B9ff089aa6943fB6Aaa5a0eeF215E8984a4  
+Governance/Efficiency.sol SmartContract: 0x9C7E3B9ff089aa6943fB6Aaa5a0eeF215E8984a4  
     This SmartContract is for delegate voting rights.
     When click delegate button, please use function delegates.
 

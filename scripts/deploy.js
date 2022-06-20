@@ -115,9 +115,9 @@ async function main() {
     console.log("cLTA address", CErc20DelegatorContract.address);
     //const cLTAAddress = CErc20DelegateContract.address;
 
-    const Comp = await hre.ethers.getContractFactory("Comp");
-    const CompContract = await Comp.deploy(deployer.address);
-    console.log("Comp address:", CompContract.address);
+    const Efficiency = await hre.ethers.getContractFactory("Efficiency");
+    const EfficiencyContract = await Efficiency.deploy(deployer.address);
+    console.log("Efficiency address:", EfficiencyContract.address);
 
     const Timelock = await hre.ethers.getContractFactory("Timelock");
     const TimelockContract = await Timelock.deploy(deployer.address, "60");
@@ -126,7 +126,7 @@ async function main() {
     const GovernanceBravoDelegator = await hre.ethers.getContractFactory("GovernorBravoDelegator");
     const GovernorBravoDelegatorContract = await GovernanceBravoDelegator.deploy(
         TimelockContract.address,
-        CompContract.address,
+        EfficiencyContract.address,
         deployer.address,
         addr,
         "17280",
